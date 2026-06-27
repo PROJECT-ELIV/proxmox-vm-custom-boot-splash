@@ -21,7 +21,7 @@ concurrency:
 jobs:
   # 1) Build and publish the reusable build environment image to GHCR.
   image:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     permissions:
       contents: read
       packages: write
@@ -70,7 +70,7 @@ jobs:
   # 2) Build the OVMF firmware inside the freshly pushed image.
   firmware:
     needs: image
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     timeout-minutes: 120
     permissions:
       contents: write # create the GitHub Release on tags
